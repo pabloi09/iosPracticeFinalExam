@@ -23,9 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let model = ModelItems()
         model.download()
         let imageDownloader = ImageDownloader()
+        let memory = Memory()
         let contentView = ContentView()
             .environmentObject(model)
             .environmentObject(imageDownloader)
+            .environmentObject(memory)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

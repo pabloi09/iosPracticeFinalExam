@@ -43,7 +43,7 @@ class ModelItems : ObservableObject{
     
 }
 
-class ImageDownloader : ObservableObject{
+class ImageDownloader : ObservableObject {
     
     var description: String = ""
     var imageQueue : DispatchQueue
@@ -130,5 +130,46 @@ class ImageDownloader : ObservableObject{
         
         print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
     }*/
+    
+}
+//Para un array de ints o de strings no haría falta convertirlo a tipo data
+//pero UserDefaults no acepta tipos personalizados, asique hay que guardarlo como tipo
+//data
+
+class Memory : ObservableObject{
+    @Published var items : [Item]
+    var jsonEncoder : JSONEncoder = JSONEncoder()
+    init(){
+        var optional : [Item]? = nil
+        if let data = UserDefaults.standard.value(forKey:"items") as? Data {
+            optional = try? JSONDecoder().decode([Item].self, from: data)
+        }
+        items = optional ?? []
+    }
+    func change(item: Item){
+        if(contains(item: item)){
+            remove(item: item)
+        }else{
+            add(item: item)
+        }
+    }
+    
+    private func add(item : Item){
+        items.append(item)
+        UserDefaults.standard.set(try? jsonEncoder.encode(items), forKey: "items")
+    }
+    
+    private func remove(item: Item){
+        items.removeAll { (i:Item) -> Bool in
+            i.id == item.id
+        }
+        UserDefaults.standard.set(try? jsonEncoder.encode(items), forKey: "items")
+    }
+    
+    func contains(item: Item)->Bool{
+        return items.contains { (i) -> Bool in
+            i.id == item.id
+        }
+    }
     
 }
