@@ -39,7 +39,7 @@ struct ContentView: View {
                 }.tag("Draw")
                 MapaView()
                     .tabItem{
-                        Text("Draw")
+                        Text("Map")
                         Image(systemName: "map")
                 }.tag("Component of UIKit")
             }
