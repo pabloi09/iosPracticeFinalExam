@@ -11,6 +11,6 @@ This is a repo is for practicing and playing for the second IOS exam. Everyone c
 - Alpha configuration of views
 - Shadows on views
 - Drag gesture
-- UIKit component´s use  
+- UIKit component´s use with SwiftUI
 <img height = 630 src = "https://github.com/pabloi09/iosPracticeFinalExam/blob/master/showIt.gif?raw=true" alt = "GIFExample"/>
 
