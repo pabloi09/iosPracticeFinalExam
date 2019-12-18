@@ -13,6 +13,7 @@ struct ContentView: View {
     @EnvironmentObject var imageDownloader : ImageDownloader
     @EnvironmentObject var memory : Memory
     @State var title : String = "Model and gestures"
+    @State var dibujoSeleccion : String = "estrella"
     var body: some View {
         NavigationView{
             TabView(selection: $title){
@@ -30,22 +31,33 @@ struct ContentView: View {
                         Text("Storage")
                         Image(systemName: "icloud.and.arrow.down")
                 }.tag("Persistence")
-                VStack{
-                    RajoyStarRow()
-                    StarView()
-                    RajoyStarRow()
-                }
-                .tabItem {
-                    Text("Draw")
-                    Image(systemName: "pencil")
-                    
+                DrawView(dibujoSeleccion: $dibujoSeleccion)
+                    .tabItem {
+                        Text("Draw")
+                        Image(systemName: "pencil")
+                        
                 }.tag("Draw")
+                MapaView()
+                    .tabItem{
+                        Text("Draw")
+                        Image(systemName: "map")
+                }.tag("Component of UIKit")
             }
             .navigationBarTitle(title)
+            .navigationBarItems(trailing: getPicker())
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        
+    }
+    
+    func getPicker() -> AnyView{
+        return title == "Draw" ?
+            AnyView(PickerDraw(seleccion: $dibujoSeleccion)):
+            AnyView(EmptyView())
         
     }
 }
+
 struct ListView: View {
     var items : [Item]
     @ObservedObject var imageDownloader : ImageDownloader
@@ -123,98 +135,20 @@ struct Gestures : ViewModifier {
     
     
 }
-struct Star: Shape {
-    
-    var fAltura: CGFloat
-    
-    //Intento de estrella not that bad
-    func path(in rect: CGRect) -> Path {
-        
-        let w = rect.size.width
-        let h = rect.size.height
-        
-        var path = Path()
-        
-        path.move(to: CGPoint(x: w/2, y: 0))
-        path.addLine(to: CGPoint(x: w/2 + w/7, y: h/4))
-        path.addLine(to: CGPoint(x: w, y: h/4))
-        path.addLine(to: CGPoint(x: w/2 + 2*w/7, y: h/2))
-        path.addLine(to: CGPoint(x: w/2 + 3*w/7, y: h))
-        path.addLine(to: CGPoint(x: w/2, y: 3*h/4))
-        path.addLine(to: CGPoint(x: w/2 - 3*w/7, y: h))
-        path.addLine(to: CGPoint(x: w/2 - 2*w/7, y: h/2))
-        path.addLine(to: CGPoint(x: 0, y: h/4))
-        path.addLine(to: CGPoint(x: w/2 - w/7, y: h/4))
-        path.closeSubpath()
-        
-        return path
-    }
-}
 
-struct StarView: View {
-    
-    @GestureState var scale: CGFloat = 1
-    
+struct PickerDraw: View {
+    @Binding var seleccion : String
     var body: some View {
-        GeometryReader { geometry in
-            Star(fAltura: self.scale)
-                .fill(LinearGradient(
-                    gradient: Gradient(colors: [.green, .red, .blue, .yellow]),
-                    startPoint: UnitPoint(x: 0.5, y: 1-self.scale),
-                    endPoint: .bottom))
-                .overlay(Star(fAltura: self.scale)
-                    .stroke(Color.black, lineWidth: 3))
-                .frame(width: geometry.size.width,
-                       height: geometry.size.height)
-                .scaleEffect(self.scale)
-                .gesture(
-                    MagnificationGesture(minimumScaleDelta: 0.01)
-                        .updating(self.$scale) { (value, state, transaction) in
-                            state = value
-                })
+        Picker(selection: $seleccion,
+               label: Text("Seleccionar figura")) {
+                Text("⭐️").tag("estrella")
+                Text("🔺").tag("triangulo")
         }
-        .padding()
-        
-        
+        .pickerStyle(SegmentedPickerStyle())
+        .padding(.horizontal)
     }
     
 }
-
-struct RajoyStarRow: View {
-    
-    
-    var body: some View {
-        HStack{
-            Image("downloading")
-            .resizable()
-            .frame(width: 80, height: 80)
-            .clipShape(Star(fAltura: 1))
-            
-            Image("downloading")
-            .resizable()
-            .frame(width: 80, height: 80)
-            .clipShape(Star(fAltura: 1))
-            
-            Image("downloading")
-            .resizable()
-            .frame(width: 80, height: 80)
-            .clipShape(Star(fAltura: 1))
-            
-            Image("downloading")
-            .resizable()
-            .frame(width: 80, height: 80)
-            .clipShape(Star(fAltura: 1))
-            Image("downloading")
-            .resizable()
-            .frame(width: 80, height: 80)
-            .clipShape(Star(fAltura: 1))
-        }
-        
-        
-    }
-    
-}
-
 
 
 struct ContentView_Previews: PreviewProvider {

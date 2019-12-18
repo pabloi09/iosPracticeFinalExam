@@ -132,6 +132,7 @@ class ImageDownloader : ObservableObject {
     }*/
     
 }
+
 //Para un array de ints o de strings no haría falta convertirlo a tipo data
 //pero UserDefaults no acepta tipos personalizados, asique hay que guardarlo como tipo
 //data

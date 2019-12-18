@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0816DE6423AA841A00F2F833 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0816DE6323AA841A00F2F833 /* DrawView.swift */; };
+		0816DE6623AA8A3700F2F833 /* MapaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0816DE6523AA8A3700F2F833 /* MapaView.swift */; };
+		0816DE6823AA8B5D00F2F833 /* SiteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0816DE6723AA8B5D00F2F833 /* SiteModel.swift */; };
 		0863BC0623A8008F00EB2226 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863BC0523A8008F00EB2226 /* AppDelegate.swift */; };
 		0863BC0823A8008F00EB2226 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863BC0723A8008F00EB2226 /* SceneDelegate.swift */; };
 		0863BC0A23A8008F00EB2226 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863BC0923A8008F00EB2226 /* ContentView.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0816DE6323AA841A00F2F833 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		0816DE6523AA8A3700F2F833 /* MapaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaView.swift; sourceTree = "<group>"; };
+		0816DE6723AA8B5D00F2F833 /* SiteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteModel.swift; sourceTree = "<group>"; };
 		0863BC0223A8008F00EB2226 /* Practice Second Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Practice Second Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0863BC0523A8008F00EB2226 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0863BC0723A8008F00EB2226 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +75,9 @@
 				0863BC0D23A8009400EB2226 /* Preview Content */,
 				0863BC1923A800AF00EB2226 /* Model.swift */,
 				0863BC1B23A83DC100EB2226 /* DetailView.swift */,
+				0816DE6323AA841A00F2F833 /* DrawView.swift */,
+				0816DE6723AA8B5D00F2F833 /* SiteModel.swift */,
+				0816DE6523AA8A3700F2F833 /* MapaView.swift */,
 			);
 			path = "Practice Second Exam";
 			sourceTree = "<group>";
@@ -152,8 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0816DE6823AA8B5D00F2F833 /* SiteModel.swift in Sources */,
 				0863BC0623A8008F00EB2226 /* AppDelegate.swift in Sources */,
+				0816DE6623AA8A3700F2F833 /* MapaView.swift in Sources */,
 				0863BC0823A8008F00EB2226 /* SceneDelegate.swift in Sources */,
+				0816DE6423AA841A00F2F833 /* DrawView.swift in Sources */,
 				0863BC0A23A8008F00EB2226 /* ContentView.swift in Sources */,
 				0863BC1C23A83DC100EB2226 /* DetailView.swift in Sources */,
 				0863BC1A23A800AF00EB2226 /* Model.swift in Sources */,
