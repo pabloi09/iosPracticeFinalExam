@@ -6,7 +6,7 @@ This is a repo is for practicing and playing for the second IOS exam. Everyone c
 - Navigation View
 - Detais Screen with the option to save items
 - A Memory custom object that stores an array of saved items
-- A Tab View to change between downloaded items and saved items
+- A Tab View navigation
 - Figure drawer screen
 - Alpha configuration of views
 - Shadows on views
